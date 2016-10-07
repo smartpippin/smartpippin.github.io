@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-10-07T13:19:43.292Z</updated>
+  <updated>2016-10-07T13:34:11.520Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>折腾无止尽</title>
+    <link href="http://yoursite.com/%5Bobject%20Object%5D/doingthings/"/>
+    <id>http://yoursite.com/[object Object]/doingthings/</id>
+    <published>2016-10-07T13:33:13.000Z</published>
+    <updated>2016-10-07T13:34:11.520Z</updated>
+    
+    <content type="html"><![CDATA[<p>123测试用</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;123测试用&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="琐事杂谈" scheme="http://yoursite.com/categories/essays/"/>
+    
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
