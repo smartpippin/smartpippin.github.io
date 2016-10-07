@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-10-01T15:27:50.709Z</updated>
+  <updated>2016-10-07T08:27:00.159Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,31 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
-    <link href="http://yoursite.com/%5Bobject%20Object%5D/undefined/"/>
-    <id>http://yoursite.com/[object Object]/undefined/</id>
-    <published>2016-10-07T05:25:39.891Z</published>
-    <updated>2016-10-01T15:27:50.709Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="折腾无止尽o-╯□╰-o"><a href="#折腾无止尽o-╯□╰-o" class="headerlink" title="折腾无止尽o(╯□╰)o"></a>折腾无止尽o(╯□╰)o</h1><p>前几天刚刚把wordpress基本算是搭建好了，结果因为始终找不到pjax主题，插件也不顶用，让我的折腾之心再起。O(∩_∩)O，其实就是想要一个自己建的美观的博客网站，技术上的东西好多还是一点儿都不明白，毕竟是半路出家，还是很有心好好学一学php,js什么的，但是奈何现在忙于考工作，心情也不好，腾不出时间静下心来发展自己的爱好。还好，在空闲之余看到了<a href="https://hran.me" target="_blank" rel="external">hran</a>的博客，瞬间被他的主题惊艳到了，真的是简洁、高端、大气上档次啊，主要是还是全站pjax响应。唯一不足的就是，他的博客是架在typecho上面的，我一届白丁，连wordpress还木有搞明白，就要起了动迁到typecho的念头。</p>
-<p>在网上大致看了一下，typecho是一款国人自己开发的博客程序，灰常的小巧精致，只有几百K，于是，二话不说就是干。%&gt;_&lt;%，正好天天背申论，已经背得发高烧了，权当放松，晚上就在小本本上开始了搬迁工作。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;折腾无止尽o-╯□╰-o&quot;&gt;&lt;a href=&quot;#折腾无止尽o-╯□╰-o&quot; class=&quot;headerlink&quot; title=&quot;折腾无止尽o(╯□╰)o&quot;&gt;&lt;/a&gt;折腾无止尽o(╯□╰)o&lt;/h1&gt;&lt;p&gt;前几天刚刚把wordpress基本算是搭建好了，结果因为始终
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/%5Bobject%20Object%5D/undefined/"/>
-    <id>http://yoursite.com/[object Object]/undefined/</id>
-    <published>2016-10-05T18:34:49.580Z</published>
-    <updated>2016-10-05T18:34:49.586Z</updated>
+    <link href="http://yoursite.com/%5Bobject%20Object%5D/hello-world/"/>
+    <id>http://yoursite.com/[object Object]/hello-world/</id>
+    <published>2016-10-07T05:55:01.000Z</published>
+    <updated>2016-10-07T08:27:00.159Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
@@ -59,6 +39,10 @@
     
     </summary>
     
+      <category term="琐事杂谈" scheme="http://yoursite.com/categories/%E7%90%90%E4%BA%8B%E6%9D%82%E8%B0%88/"/>
+    
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
     
   </entry>
   

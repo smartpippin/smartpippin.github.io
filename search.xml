@@ -4,16 +4,8 @@
   
     
     <entry>
-      <title></title>
-      <url>http://yoursite.com/%5Bobject%20Object%5D/undefined/</url>
-      <content type="html"><![CDATA[<h1 id="折腾无止尽o-╯□╰-o"><a href="#折腾无止尽o-╯□╰-o" class="headerlink" title="折腾无止尽o(╯□╰)o"></a>折腾无止尽o(╯□╰)o</h1><p>前几天刚刚把wordpress基本算是搭建好了，结果因为始终找不到pjax主题，插件也不顶用，让我的折腾之心再起。O(∩_∩)O，其实就是想要一个自己建的美观的博客网站，技术上的东西好多还是一点儿都不明白，毕竟是半路出家，还是很有心好好学一学php,js什么的，但是奈何现在忙于考工作，心情也不好，腾不出时间静下心来发展自己的爱好。还好，在空闲之余看到了<a href="https://hran.me" target="_blank" rel="external">hran</a>的博客，瞬间被他的主题惊艳到了，真的是简洁、高端、大气上档次啊，主要是还是全站pjax响应。唯一不足的就是，他的博客是架在typecho上面的，我一届白丁，连wordpress还木有搞明白，就要起了动迁到typecho的念头。</p>
-<p>在网上大致看了一下，typecho是一款国人自己开发的博客程序，灰常的小巧精致，只有几百K，于是，二话不说就是干。%&gt;_&lt;%，正好天天背申论，已经背得发高烧了，权当放松，晚上就在小本本上开始了搬迁工作。</p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Hello World]]></title>
-      <url>http://yoursite.com/%5Bobject%20Object%5D/undefined/</url>
+      <url>http://yoursite.com/%5Bobject%20Object%5D/hello-world/</url>
       <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
