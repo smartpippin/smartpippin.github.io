@@ -17,8 +17,8 @@
   
   <entry>
     <title>折腾无止尽</title>
-    <link href="http://yoursite.com/doingthings/"/>
-    <id>http://yoursite.com/doingthings/</id>
+    <link href="http://yoursite.com/post/doingthings/"/>
+    <id>http://yoursite.com/post/doingthings/</id>
     <published>2016-10-07T13:33:13.000Z</published>
     <updated>2016-10-07T13:34:11.520Z</updated>
     
@@ -41,8 +41,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/hello-world/"/>
-    <id>http://yoursite.com/hello-world/</id>
+    <link href="http://yoursite.com/post/hello-world/"/>
+    <id>http://yoursite.com/post/hello-world/</id>
     <published>2016-10-07T05:55:01.000Z</published>
     <updated>2016-10-07T13:19:43.292Z</updated>
     
