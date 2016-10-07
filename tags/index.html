@@ -295,9 +295,9 @@
 
  </div>
 
-  <a id="follow" href='javascript:(
+  <a href='javascript:(
     /*
-     * Copyright (C) 2015 Rocko (http://rocko.xyz) <rocko.zxp@gmail.com>
+     * Copyright (C) 2015 Rocko (rocko.xyz) <rocko.zxp@gmail.com>
      *
      * Licensed under the Apache License, Version 2.0 (the "License");
      * you may not use this file except in compliance with the License.
@@ -312,6 +312,15 @@
      * limitations under the License.
      */
     function go() {
+
+
+    var songs = [
+                "https://oe9fpgl02.qnssl.com/music/songs/Fashion%20Show%20-%20Cory%20Lee.mp3",
+                "https://oe9fpgl02.qnssl.com/music/songs/Outside-Calvin%20Harris.mp3",
+                "https://oe9fpgl02.qnssl.com/music/songs/Wake%20-%20Hillsong%20Young%20And%20Free.mp3"
+                "https://oe9fpgl02.qnssl.com/music/songs/DJ%20L3%20Fourth%20set%20-%20DubThug.mp3"
+    ];
+
     
     function c() {
         var e = document.createElement("link");
@@ -347,7 +356,7 @@
  
     function v(i) {
         var s = d(i);
-        return s.height > e &amp;&amp; s.height < n &amp;&amp; s.width > t &amp;&amp; s.width < r
+        return s.height > e && s.height < n && s.width > t && s.width < r
     }
  
     function m(e) {
@@ -364,7 +373,7 @@
         var e = document.documentElement;
         if (!!window.innerWidth) {
             return window.innerHeight
-        } else if (e &amp;&amp; !isNaN(e.clientHeight)) {
+        } else if (e && !isNaN(e.clientHeight)) {
             return e.clientHeight
         }
         return 0
@@ -379,15 +388,8 @@
  
     function E(e) {
         var t = m(e);
-        return t >= w &amp;&amp; t <= b + w
+        return t >= w && t <= b + w
     }
- 
-    var songs = [
-                "http://7xoiki.com1.z0.glb.clouddn.com/Music-Fashion_Show.mp3",
-                "http://7xoiki.com1.z0.glb.clouddn.com/Music-Wake-Live.mp3",
-                "http://7xoiki.com1.z0.glb.clouddn.com/Music-outside.mp3",
-                "http://7xoiki.com1.z0.glb.clouddn.com/Music-sunburst.mp3"
-    ];
 
     function S() {
         var e = document.getElementById("audio_element_id");
@@ -467,7 +469,8 @@
     var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
     var a = "mw-strobe_light";
 
-    var f = "/css/harlem-shake-style.css";
+    /* harlem-shake-style.css，替换成你的位置，也可以直接使用：//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css */
+    var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
     
     var l = "mw_added_css";
     var b = g();
@@ -496,8 +499,7 @@
             O.push(A)
         }
     }
-    })()'>
-      <i class="fa fa-music"></i> &nbsp; High一下 </a>
+    })()'>High一下</a>
 
     </header>
 
