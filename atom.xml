@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-10-07T13:34:11.520Z</updated>
+  <updated>2016-10-11T15:40:12.062Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,19 +16,25 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>折腾无止尽</title>
-    <link href="http://yoursite.com/post/doingthings/"/>
-    <id>http://yoursite.com/post/doingthings/</id>
-    <published>2016-10-07T13:33:13.000Z</published>
-    <updated>2016-10-07T13:34:11.520Z</updated>
+    <title>说说这个博客</title>
+    <link href="http://yoursite.com/post/about-the-blog/"/>
+    <id>http://yoursite.com/post/about-the-blog/</id>
+    <published>2016-10-11T13:42:24.000Z</published>
+    <updated>2016-10-11T15:40:12.062Z</updated>
     
-    <content type="html"><![CDATA[<p>123测试用</p>
+    <content type="html"><![CDATA[<h1 id="说说这个博客"><a href="#说说这个博客" class="headerlink" title="说说这个博客"></a>说说这个博客</h1><p>最近刚刚毕业从学校回来，正在备考年底的国考和省考，闲暇之余在家捣鼓起了博客，一来想借此机会给自己在网上一个安静的空间，反思这些年来自己在成长过程中的所思所想，安安静静地把它们记录下来 ，找准自己未来前进的方向；二来也是由于自己一直对计算机有着很高的兴趣，即使是当年因为数学和物理学得比较吃力转了文科，还是没有忘记这份憧憬，那么我想一切就从建立一个真正的有着自己域名的网站开始吧。</p>
+<p>​怎么想到要建一个自己的博客呢？:alien: 这还要从科学上网说起，虽然兴趣使然，但奈何智商不足o(╯□╰)o，渐渐离梦想的计算机、网络、软件什么的越来越远。不过在大学四年屁大事儿没干成一件，倒是把科学上网的各种方法研究了个透彻。前些天由于之前一直用的SS账号老是抽风，索性自己下决心买了vps，亲自来搭建翻越万里长城的小梯子，中间千难万苦，把我一个不会代码，木有接触过linux的大小白折磨得死去活来，还好最终还是成功了(⊙﹏⊙)b。。</p>
+<p>本以为到此为止了。。结果骨子里的折腾劲儿又涌上头来，想着，自己弄一台VPS就用来搭个SS是不是有点大材小用了。。:monkey_face:于是自己东谷歌、西百度，萌生了自己搭建一个个人博客的想法。想想看，能有一个自己域名的完全自定义的网站(这在以前的想法里感觉很遥远。。)，还是有点小小的激动呢。。:smiley:</p>
+<p>说干就干，啥都不懂，就开始一篇一篇地照着百度、谷歌的前面的大神的教程，一步一步，依样画葫芦的方式，在无数次的重装系统之后，还是成功进入了wordpress的hello world!界面。。当时那个激动呀，真是难以言说:stuck_out_tongue:然后后面就是继续的各种主题插件的捣鼓折腾。没想到，不到三天，就离开了wordpress跳到了typecho平台。原因很简单，看上了一款灰常简洁的pjax全响应式的主题。</p>
+<p>​既然接触了个人博客，自然而然的就见到了许多的大神，看着他们精美的网页，渊博的知识，真正认识到自己的渺小。:see_no_evil:  哦，原来电脑不是仅仅就用来玩玩游戏、看看电影、翻翻土墙、上上谷歌，还能做那么多有趣好玩的事情。各种代码交织出美妙的网页，构造出精巧的应用，还有markdown这么有意思的语言。</p>
+<p>自己真的越来越迷上了这一切，前几天又继续折腾，搭建了这个hexo博客。不过，还是决定把hexo的这个博客暂时只做封存备用，以便以后用来记录自己在学习编程，建站过程中的专门的心得笔记。</p>
+<p>当前的重心还是要在考取工作上，争取早日上岸，也了却一桩心事，然后就可以把充分的空余时间投入到不断提高自己能力的目标上来。</p>
+<h2 id="Hello-world"><a href="#Hello-world" class="headerlink" title="Hello,world!"></a>Hello,world!</h2><p><strong>小铭来也！</strong></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;123测试用&lt;/p&gt;
-
+      &lt;h1 id=&quot;说说这个博客&quot;&gt;&lt;a href=&quot;#说说这个博客&quot; class=&quot;headerlink&quot; title=&quot;说说这个博客&quot;&gt;&lt;/a&gt;说说这个博客&lt;/h1&gt;&lt;p&gt;最近刚刚毕业从学校回来，正在备考年底的国考和省考，闲暇之余在家捣鼓起了博客，一来想借此机会给自己在网上一个安
     
     </summary>
     
@@ -44,7 +50,7 @@
     <link href="http://yoursite.com/post/hello-world/"/>
     <id>http://yoursite.com/post/hello-world/</id>
     <published>2016-10-07T05:55:01.000Z</published>
-    <updated>2016-10-07T13:19:43.292Z</updated>
+    <updated>2016-10-11T14:24:24.238Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
@@ -62,6 +68,8 @@
       &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
     
     </summary>
+    
+      <category term="你好，世界！" scheme="http://yoursite.com/categories/%E4%BD%A0%E5%A5%BD%EF%BC%8C%E4%B8%96%E7%95%8C%EF%BC%81/"/>
     
     
       <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
