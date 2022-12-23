@@ -1,0 +1,828 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="小铭＆小宝">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="前言最近疫情封控在家，闲暇之余又开始折腾起网络来，主要是基于家里面的群晖NAS设备，初衷就是想尽可能把这台DS920+充分利用起来，通过在群晖里成功搭建Chevereto图床、Lsky兰空2.0图床以及Minio对象储存服务，并利用github page搭建个人博客网站，同时利用了cloudflare的DNS解析和CDN加速实现了全站https访问。 一、通过github pages+hexo搭建">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通过github pages+hexo搭建个人博客">
+<meta property="og:url" content="https://smartpippin.asia/posts/1002/index.html">
+<meta property="og:site_name" content="小铭＆小宝的世界">
+<meta property="og:description" content="前言最近疫情封控在家，闲暇之余又开始折腾起网络来，主要是基于家里面的群晖NAS设备，初衷就是想尽可能把这台DS920+充分利用起来，通过在群晖里成功搭建Chevereto图床、Lsky兰空2.0图床以及Minio对象储存服务，并利用github page搭建个人博客网站，同时利用了cloudflare的DNS解析和CDN加速实现了全站https访问。 一、通过github pages+hexo搭建">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://smartming.asia:9000/hexo/1002/front.png">
+<meta property="article:published_time" content="2022-12-22T07:30:35.000Z">
+<meta property="article:modified_time" content="2022-12-23T12:23:32.836Z">
+<meta property="article:author" content="小铭＆小宝">
+<meta property="article:tag" content="原创">
+<meta property="article:tag" content="群晖nas">
+<meta property="article:tag" content="minio">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="githubpages">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://smartming.asia:9000/hexo/1002/front.png">
+  
+  
+  
+  <title>通过github pages+hexo搭建个人博客 - 小铭＆小宝的世界</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"smartpippin.asia","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"ajU0Rf438r30zwqdTMH6GXLN-MdYXbMMI","app_key":"yKk268EAigRjJKKbqNrzxCDH","server_url":"https://api.smartming.asia","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>小铭＆小宝的世界</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="通过github pages+hexo搭建个人博客"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-12-22 15:30" pubdate>
+          2022年12月22日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          7.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          67 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">通过github pages+hexo搭建个人博客</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近疫情封控在家，闲暇之余又开始折腾起网络来，主要是基于家里面的群晖NAS设备，初衷就是想尽可能把这台DS920+充分利用起来，通过在群晖里成功搭建Chevereto图床、Lsky兰空2.0图床以及Minio对象储存服务，并利用github page搭建个人博客网站，同时利用了cloudflare的DNS解析和CDN加速实现了全站https访问。</p>
+<h1 id="一、通过github-pages-hexo搭建个人博客网站"><a href="#一、通过github-pages-hexo搭建个人博客网站" class="headerlink" title="一、通过github pages+hexo搭建个人博客网站"></a>一、通过github pages+hexo搭建个人博客网站</h1><p>很久之前为了看看世界，接触了VPS，本着不浪费的原则，研究了个人博客网站的搭建，当时用了wordpress和typecho，功能很多，插件丰富，但是还是觉得太麻烦和臃肿了，个人博客网站颇有大材小用感觉，而且wordpress原生也不支持markdown，这次就采用了免费的githubpage+hexo博客框架进行搭建。</p>
+<p>具体搭建方法参照的<a target="_blank" rel="noopener" href="https://blog.csdn.net/yaorongke/article/details/119089190">GitHub Pages + Hexo搭建个人博客网站，史上最全教程</a> 这篇文章的步骤，还是非常简单。记录一下关键之处以免后期遗忘：</p>
+<h2 id="（一）github仓库的创建"><a href="#（一）github仓库的创建" class="headerlink" title="（一）github仓库的创建"></a>（一）github仓库的创建</h2><p>注册登录github，创建账号这些常规操作就不说了。然后点击右上角的新建仓库。<br><img src="https://smartming.asia:9000/hexo/1002/1.png" srcset="/img/loading.gif" lazyload></p>
+<p>仓库名字一定要和自己的用户名一模一样，&lt;用户名&gt;.github.io 这其实就是你的个人博客默认网址。<br><img src="https://smartming.asia:9000/hexo/1002/2.png" srcset="/img/loading.gif" lazyload></p>
+<p>然后点击创建仓库即可。其余步骤参考链接里面说得非常清楚，我这里只是记录一下自己搭建过程的关键步骤。</p>
+<h2 id="（二）准备本地环境（nodeJS、GIT）安装hexo框架"><a href="#（二）准备本地环境（nodeJS、GIT）安装hexo框架" class="headerlink" title="（二）准备本地环境（nodeJS、GIT）安装hexo框架"></a>（二）准备本地环境（nodeJS、GIT）安装hexo框架</h2><p>Hexo博客依赖nodeJS环境，在<a target="_blank" rel="noopener" href="https://nodejs.org/en/">nodejs官网</a> 下载安装即可，默认就会安装npm环境，mac和win版本都有，因为我自己家里面是mac，办公室是win环境，我都安装了。<br>Git安装教程更多，不再赘述。<br>安装hexo框架就是咔咔在终端复制代码就搞定，不再赘述。</p>
+<h2 id="（三）更换为fluid主题"><a href="#（三）更换为fluid主题" class="headerlink" title="（三）更换为fluid主题"></a>（三）更换为fluid主题</h2><p>看了一下，博主推荐的fluid主题确实不错，我也选择了这个，安装方法用的<a target="_blank" rel="noopener" href="https://github.com/fluid-dev/hexo-theme-fluid">fluid</a> 官方推荐的方法一：<strong>通过 npm 直接安装</strong>，这种方式后期有了新版可以一键更新。整个界面还是非常简洁流畅舒适的。<br><img src="https://smartming.asia:9000/hexo/1002/3.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="（四）主题配置（！！！这里有大坑，搞了好久）"><a href="#（四）主题配置（！！！这里有大坑，搞了好久）" class="headerlink" title="（四）主题配置（！！！这里有大坑，搞了好久）"></a>（四）主题配置（！！！这里有大坑，搞了好久）</h2><p>按照参考链接的教程和fluid官方wiki，想要实现“网页统计”、“展示PV和UV统计”、“阅读量统计”、开通评论功能等等。<br>要实现上述的统计、评论等功能，需要注册 <code>Leancloud</code> 免费服务来实现。<br>注册leancloud时候，一定一定一定要选择国际版，我之前就是跟着教程选了国内版，一直有问题。<br><img src="https://smartming.asia:9000/hexo/1002/4.png" srcset="/img/loading.gif" lazyload></p>
+<p>这里注册完国际版的leancloud之后，创建应用，点击设置，在应用凭证里面记录下APP ID、APP KEY，和服务器地址API（<strong>这里这个地址要做一个域名解析，后面马上会说，这个也很有用，不然很有可能评论模块加载不出来，我被困在这里好久。</strong>）<br><img src="https://smartming.asia:9000/hexo/1002/5.png" srcset="/img/loading.gif" lazyload></p>
+<p>以上信息记录好了之后，就开始搭建评论管理模块、对应用凭证里面的api服务器地址进行解析。</p>
+<p>这里你就需要一个域名了，域名注册也很简单，好几年前刚刚开始折腾的时候找过免费域名注册网站，google上可以搜到很多，现在我个人推荐还是腾讯云买域名吧，就买最便宜的，我这个.asia后缀的一年几块钱，腾讯云的域名用dnspod解析，并且可以自动免费签发ssl证书，对我这样的小白来说再好不过，实在不想自己再去折腾SSL证书配置这些。</p>
+<p>当然这个个人博客网站本身的解析我又另外再注册了一个域名，用cloudflare的DNS来解析，免费白嫖CF的CDN（因为github.io国内访问会抽风），也可以全自动开启全站强制https非常方便。</p>
+<p>因此我最终注册了2个域名，一个用来专门访问博客，另外一个就用来给群晖和leancloud服务使用，包括后面在群晖内自建的mino对象储存、Chevereto图床、Lsky兰空2.0图床等生成的外链都可以直接访问，暂时不需要运营商付费的OSS服务啦。</p>
+<p>这一步完成后，按照<a target="_blank" rel="noopener" href="https://blog.csdn.net/yaorongke/article/details/119089190">参考教程</a>和<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/guide/#%E7%BD%91%E9%A1%B5%E7%BB%9F%E8%AE%A1">fluid主题官方文档</a> 的说明，将<code>leancloud</code>的中获取的APPID和APPkey填写在主题配置文件<code>_config.fluid.yml</code>的对应位置即可。</p>
+<p>以上完成之后，在我自己测试过程中发现2个问题，一是经常有时评论区域不显示，二是没有专门的后台评论管理界面。第一个问题我发现是因为没有在<code>_config.fluid.yml</code>主题配置文件中填写leancloud的reset-api，即<code>server_url: </code>这一栏要填写你在leancloud中取得的服务器地址。<br><img src="https://smartming.asia:9000/hexo/1002/6.png" srcset="/img/loading.gif" lazyload></p>
+<p>这里的地址leancloud会默认生成一个，我个人觉得为了更快解析，还是用刚刚注册的域名对其做一个国内的CNAME域名解析服务，这个操作很简单，我直接用腾讯云自带的DNSPOD新增一个解析即可。<br><img src="https://smartming.asia:9000/hexo/1002/7.png" srcset="/img/loading.gif" lazyload></p>
+<p>上图就是解析成功后的API访问域名，也就是你需要填写到fluid主题配置文件<code>_config.fluid.yml</code>中leancloud的<code>server_url</code>的位置。这样就不会出现评论区时而加载不出来的情况。</p>
+<p>针对第二个问题，后台评论管理系统，这个也很简单，由于我选择<a target="_blank" rel="noopener" href="https://valine.js.org/quickstart.html">valine评论系统</a>，具体怎么配置这里主要参考了这位<a target="_blank" rel="noopener" href="https://www.heson10.com/posts/28396.html">黑石博客大佬的教程</a> ，里面大佬已经说得很详细了，我这里就自己记录一下最需要注意的地方。<br>仍然进入leancloud的后台，在<code>云引擎-部署</code>里面选择<code>部署项目</code>，填写黑石博客大佬提供的valine-admin-server<br>    <code> https://github.com/heson525/Valine-Admin-Server</code></p>
+<p>云引擎部署成功后，在leancloud设置-域名绑定中绑定用于进入博客评论系统后台管理界面的域名，这里推荐使用刚刚在腾讯云中购买的域名，加上leancloud前缀，添加一条CNAME解析即可，非常简单。最终访问评论后台的域名为，例如：<code>https://leancloud.xxx.com</code></p>
+<p><img src="https://smartming.asia:9000/hexo/1002/8.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://smartming.asia:9000/hexo/1002/9.png" srcset="/img/loading.gif" lazyload title="腾讯云DNSPOD设置域名解析"></p>
+<p>域名解析完成后，按照黑石大佬的教程，根据自己的需要，在云引擎里面添加<code>环境变量</code>，即可以实现邮件通知等功能。下面是我自己配置好的valine评论管理后台界面，里面可以自由删除、查看评论消息：<br><img src="https://smartming.asia:9000/hexo/1002/10.png" srcset="/img/loading.gif" lazyload></p>
+<p>最后，注意一下黑石大佬在文章最后说的如何解决<code>LeanCloud流控问题</code>，参照他的教程在github中使用<code>GitHub+Actions大法</code>设置一下即可，很简单，不再赘述。</p>
+<h2 id="（五）发布博客到github"><a href="#（五）发布博客到github" class="headerlink" title="（五）发布博客到github"></a>（五）发布博客到github</h2><p>至此，我们的hexo博客本地化运行环境就基本搭建成功了，在博客目录打开终端，运行<code>hexo g -d</code>  <code>hexo s</code>命令之后，即可通过浏览器访问 <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000</a> ，这样就能够看到本地化的hexo博客。<br>之后需要将我们搭建好的博客推送到github仓库中，这样我们通过<code>https://仓库名.github.io</code>在互联网中访问我们的个人博客网站啦。<br>这里具体操作也跟着<a target="_blank" rel="noopener" href="https://blog.csdn.net/yaorongke/article/details/119089190">GitHub Pages + Hexo搭建个人博客网站，史上最全教程</a>教程走即可，但是这里有个小坑，如果完全按照教程的设置，你会发现推送失败，因为github为了安全原因修改了推送的验证机制，这里我在教程的评论区找到了<a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-deployer-git/issues/210#issuecomment-915083244">解决方法</a>：</p>
+<p><img src="https://smartming.asia:9000/hexo/1002/11.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://smartming.asia:9000/hexo/1002/12.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://smartming.asia:9000/hexo/1002/13.png" srcset="/img/loading.gif" lazyload></p>
+<p>如上所述，按照这样修改<code>_config.yml</code>文件的结尾<code>deploy</code>部署的信息即可成功推送了。<br>通过浏览器访问：<code>https://smartpippin.github.io</code>即可访问自己的个人网站啦。<br>至此，通过github pages搭建个人博客网站的任务就顺利完成了，可以看一下hexo或者fluid的官方wiki，进行主题细微设置调整和常用的hexo写文章、发布文章的命令等等就OK啦。</p>
+<h1 id="二、自定义域名-cloudflare开启全站https，实现博客文章生成简洁的永久链接"><a href="#二、自定义域名-cloudflare开启全站https，实现博客文章生成简洁的永久链接" class="headerlink" title="二、自定义域名+cloudflare开启全站https，实现博客文章生成简洁的永久链接"></a>二、自定义域名+cloudflare开启全站https，实现博客文章生成简洁的永久链接</h1><h2 id="（一）自定义网站域名"><a href="#（一）自定义网站域名" class="headerlink" title="（一）自定义网站域名"></a>（一）自定义网站域名</h2><p>完成网站搭建后，你的个人网站网址是github pages默认的<code>https://xxx.github.io</code> ，正常使用一般也是没有问题的。但是由于国内访问github网络环境的问题，经常可能会打不开github.io的域名，此时就需要用自定义域名加上CDN加速，实现国内外顺畅访问。<br>这里推荐<code>cloudflare</code>来进行域名解析，原因很简单，两个字<code>免费</code>。而且cloudflare也可以强制一键开启全站https，很傻瓜的操作就可以完成。</p>
+<h3 id="腾讯云购买域名"><a href="#腾讯云购买域名" class="headerlink" title="腾讯云购买域名"></a>腾讯云购买域名</h3><p>首先，我自己仍然在腾讯云购买了asia后缀的域名，也就是我现在的博客网站：<code>smartpippin.asia</code>一年只要几块钱，购买完成后，不用腾讯的DNSPOD解析服务，而选择cloudflare的DNS解析，以便享受其提供的CDN加速服务。<br><img src="https://smartming.asia:9000/hexo/1002/14.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="使用Cloudflare解析域名"><a href="#使用Cloudflare解析域名" class="headerlink" title="使用Cloudflare解析域名"></a>使用Cloudflare解析域名</h3><p>进入cloudflare网站，点击添加站点，将你刚刚注册的域名添加到cloudflare里面。<br><img src="https://smartming.asia:9000/hexo/1002/15.png" srcset="/img/loading.gif" lazyload></p>
+<p>上图是我已经添加成功后的效果。<br>之后在购买域名的服务商管理界面，修改域名解析的DNS服务器，将其修改为cloudflare的DNS服务器：<br><img src="https://smartming.asia:9000/hexo/1002/16.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://smartming.asia:9000/hexo/1002/17.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://smartming.asia:9000/hexo/1002/18.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="在github-pages中添加自定义域名解析"><a href="#在github-pages中添加自定义域名解析" class="headerlink" title="在github pages中添加自定义域名解析"></a>在github pages中添加自定义域名解析</h3><p>这里参考<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2019284">使用腾讯云DNS解析 + Github Pages，免费搭建个人网站</a> 这篇文章里面的办法，在github pages设置里面添加上你的自定义域名，同时在cloudflare的DNS解析记录中添加2个CNAME记录值：<br><img src="https://smartming.asia:9000/hexo/1002/19.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://smartming.asia:9000/hexo/1002/20.png" srcset="/img/loading.gif" lazyload></p>
+<p>这里设置完成后， github 会自动的在仓库根目录里生成一个<code>CNAME</code>文件，我们要将这个CNAME文件下载下来，并将这个Cname解析文件放在hexo博客目录的source文件夹里面，这样在更新博客推送到github仓库时才能将cname文件生成在public推送目录里面，不进行这一步则自定义域名解析会失效。（这里可以参考<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/github-pages">官方文档说明</a>）<br><img src="https://smartming.asia:9000/hexo/1002/21.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://smartming.asia:9000/hexo/1002/22.png" srcset="/img/loading.gif" lazyload></p>
+<p>此时输入自定义域名<code>smartpippin.asia</code>即可访问自己的个人网站。</p>
+<h2 id="（二）用cloudflare自动设置SSL证书，开启全站https"><a href="#（二）用cloudflare自动设置SSL证书，开启全站https" class="headerlink" title="（二）用cloudflare自动设置SSL证书，开启全站https"></a>（二）用cloudflare自动设置SSL证书，开启全站https</h2><p>这个就更简单了，进入cloudflare控制台，进入ssl&#x2F;tls选项，自己看着描述开启即可。傻瓜操作非常简单。<br><img src="https://smartming.asia:9000/hexo/1002/23.png" srcset="/img/loading.gif" lazyload></p>
+<p>到这里就顺利实现了自定义域名+CDN加速+全站开启https了。</p>
+<h2 id="（三）添加abbrlink2插件，实现博客文章永久链接"><a href="#（三）添加abbrlink2插件，实现博客文章永久链接" class="headerlink" title="（三）添加abbrlink2插件，实现博客文章永久链接"></a>（三）添加abbrlink2插件，实现博客文章永久链接</h2><p>hexo博客默认生成的文章链接长这样：</p>
+<pre><code class="hljs">https://xxx.com/2021/03/10/hello-world/index.html
+</code></pre>
+<p>真可谓是又臭又长，而且分享也不方便，我发现了一个hexo生成永久静态链接的插件，<a target="_blank" rel="noopener" href="https://github.com/rozbo/hexo-abbrlink2">hexo-abbrlink2</a> 使用起来也很简单，在博客根目录按照说明输入命令，修改一下config.yml文件即可：</p>
+<p><img src="https://smartming.asia:9000/hexo/1002/24.png" srcset="/img/loading.gif" lazyload></p>
+<p>设置完成后重新部署博客，之后你的文章链接就会这样：</p>
+<pre><code class="hljs">https://smartpippin.asia/posts/1001/
+</code></pre>
+<p>这样文章的链接就非常的整洁有序。该作者还有一个功能类似的插件<a target="_blank" rel="noopener" href="https://github.com/rozbo/hexo-abbrlink">abbrlink</a> 两个功能类似但是生成的永久链接形式稍有区别，个人更喜欢abbrlink2。</p>
+<h1 id="三、关于Chevereto图床、Lsky兰空2-0图床以及Minio对象储存服务"><a href="#三、关于Chevereto图床、Lsky兰空2-0图床以及Minio对象储存服务" class="headerlink" title="三、关于Chevereto图床、Lsky兰空2.0图床以及Minio对象储存服务"></a>三、关于Chevereto图床、Lsky兰空2.0图床以及Minio对象储存服务</h1><p>基本上，通过以上一、二步骤的操作，个人博客网站就算全部完工大吉了，现在就只需要用typora或者obsidian等工具写文章就可以了。</p>
+<p>这里我个人用的是obsidian，安装了<code>remotely save</code>插件，通过webdav服务，在mac、win、ios等等设备和系统之间实现了实时所有文章的同步写作，非常方便。我自己将obsidian的文章仓库就建在群晖的NAS和微软的onedrive服务里面，基本实现了双重备份保险。关于obsidian的具体操作，非常傻瓜，这里随便百度一下就有教程，此处不在赘述。</p>
+<p>既然网站搞定，写作工具搞定，现在就是万事俱备只欠东风。文章中要引用文件、图片、音乐等等怎么办呢？全部放在github pages仓库里？显然不太现实，速度也很慢，用百度网盘、阿里云盘等等国内各种网盘服务？偶尔分享点文件还可以，但是写文章引用的大量图片怎么办？想起6年多以前，自己刚刚大学毕业开始折腾网络的时候，那时用wordpress、typecho建了网站玩玩，当时没有NAS，就用的国内的七牛云、阿里云的对象存储服务（OSS），少量的不要钱，但是速度慢，量多了还是要收费。<br><img src="https://smartming.asia:9000/hexo/1002/25.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://smartming.asia:9000/hexo/1002/26.png" srcset="/img/loading.gif" lazyload></p>
+<p>现在既然有了群晖NAS，有了公网ip，肯定要充分利用起来。随便百度谷歌一下，初步考虑自建图床，自己尝试了Chevereto图床、Lsky兰空2.0图床这两个图床服务，感觉都非常不错。</p>
+<h2 id="（一）Chevereto图床（推荐指数：★★★）"><a href="#（一）Chevereto图床（推荐指数：★★★）" class="headerlink" title="（一）Chevereto图床（推荐指数：★★★）"></a>（一）Chevereto图床（推荐指数：★★★）</h2><p>Chevereto图床的搭建完全参照了<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1VC4y1p7JW/">哔站这位up主的教程</a>，表示感谢。因为Chevereto正式版要收费，我尝试过安装其他版本都没有很成功，最后还是依样画葫芦按照这位up主提供的版本安装成功了。<br>同时，使用Chevereto图床的时候可以修改默认最大上传图片的大小，修改方法参考<a target="_blank" rel="noopener" href="https://www.mspace.cc/archives/606">这个博主的教程</a> ，这里注意按照哔站up主安装的Chevereto图床的php.ini文件直接通过群晖的<code>web station</code>套件里面搜索下面2个选项进行修改（修改为：10240M）：</p>
+<pre><code class="hljs">post_max_size
+upload_max_filesize
+</code></pre>
+<p><img src="https://smartming.asia:9000/hexo/1002/27.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://smartming.asia:9000/hexo/1002/28.png" srcset="/img/loading.gif" lazyload></p>
+<p>在图床网站上再修改一下上传上限即可：<br><img src="https://smartming.asia:9000/hexo/1002/29.png" srcset="/img/loading.gif" lazyload><br>此时，图片上传上限变为10GB，完全够用啦。<br><img src="https://smartming.asia:9000/hexo/1002/30.png" srcset="/img/loading.gif" lazyload></p>
+<p>但是呢，按照哔站这个up主安装成功的Chevereto图床不能搭配<a target="_blank" rel="noopener" href="https://picgo.github.io/PicGo-Doc">Picgo</a> 工具使用，picgo里面的Chevereto插件我试了好久都没有成功，估计跟我这个Chevereto图床版本有关系。<br>随后我就暂时放弃了Chevereto图床，开始尝试第二种Lsky兰空2.0图床工具。</p>
+<h2 id="（二）Lsky兰空2-0图床（推荐指数：★★★★）"><a href="#（二）Lsky兰空2-0图床（推荐指数：★★★★）" class="headerlink" title="（二）Lsky兰空2.0图床（推荐指数：★★★★）"></a>（二）Lsky兰空2.0图床（推荐指数：★★★★）</h2><p>兰空图床应该是国人自己开发的，我用群晖docker安装的，使用了一下，体验也很不错，可以配合picgo的兰空图床插件使用，实现博客写作时候图片便捷快速上传并生成外链。<br><img src="https://smartming.asia:9000/hexo/1002/31.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://smartming.asia:9000/hexo/1002/32.png" srcset="/img/loading.gif" lazyload></p>
+<p>这里兰空图床安装参考了<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/544546775">在群晖上使用 Docker 安装 Lsky Pro （兰空）图床「SQLite 版」</a> 的教程，非常简单，直接在docker里面成功安装了兰空图床，这里注意就是docker安装时的文件夹映射：<br><img src="https://smartming.asia:9000/hexo/1002/33.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="【有用的小工具】群晖DSM系统自带反向代理服务功能"><a href="#【有用的小工具】群晖DSM系统自带反向代理服务功能" class="headerlink" title="【有用的小工具】群晖DSM系统自带反向代理服务功能"></a>【有用的小工具】群晖DSM系统自带<code>反向代理服务</code>功能</h3><p>这里有一个小插曲，顺便说明一下群晖的一个特色功能，即群晖<code>控制面板-登录门户-高级-反向代理服务器</code>的功能，这里可以将你的想要的安装在群晖DSM里面的各种服务，如上面的Chevereto、兰空图床、下面要说到的mino服务等等，很方便的实现反向代理，只需要动动鼠标即可将http自动变成https。有些服务，诸如bitwarden密码管理器服务端是必须要强制https才可以用的。不用群晖提供的这个反代功能就需要自己再额外准备一台VPS，通过Nginx反向代理进行访问，感觉有点麻烦，我就没有尝试了。<br>用群晖这个反代唯一的不足，但是这也不是群晖的问题，是因为国内不开放80和443端口，所以在没有VPS作为中转的情况下，只有带端口访问了，当然我个人也不怎么介意。若实在不想要带端口访问，只有买VPS再配置Nginx反向代理了。<br>这里具体的操作方法，参考这篇博客的说明，也是非常简单。<a target="_blank" rel="noopener" href="https://wiki-power.com/%E7%94%A8%E7%BE%A4%E6%99%96%E8%87%AA%E5%B8%A6%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0HTTPS%E8%AE%BF%E9%97%AE">用群晖自带反向代理实现 HTTPS 访问</a> 个人建议设置端口时可以采取后移一位的方法，比如我的qb下载器默认http端口是8085，那么我的反代端口就设置为往后增加1，即8086端口，这样可以方便记忆。另外设置好之后记得在路由器的<code>端口转发</code>将设置的端口转发出去，才能在外网访问。</p>
+<p><img src="https://smartming.asia:9000/hexo/1002/34.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="（三）minio对象储存服务（推荐指数：★★★★★）"><a href="#（三）minio对象储存服务（推荐指数：★★★★★）" class="headerlink" title="（三）minio对象储存服务（推荐指数：★★★★★）"></a>（三）minio对象储存服务（推荐指数：★★★★★）</h2><p>minio这个东西呢，是我之前找兰空图床教程的时候偶然发现的，当时没怎么在意，因为群晖NAS本来就自带drive这些工具，分享文件也没问题啊。但是在博客网站搭建完成后，我发现如果需要在文章中插入外链图片就用Chevereto、兰空图床也没问题，但是当你需要引用一个mp3一个视频文件或者其他类型的文件时，图床是没办法解决的，群晖自带的文件分享外链也不好用，打不开或者有时间限制，反正设置很麻烦，也不能实现写博客实时上传。<br>因此我又认真研究了一下minio，完全解决了上述所有的痛点，可以实现所有的文件实时上传，即时生成永久只读外链，非常安全、有序、便捷，操作简单得没边，我这边文章中所有的图片都是在minio中引用的外链。（这里还插一句，群晖DSM里面还有个套件叫<a target="_blank" rel="noopener" href="https://alist.nn.ci/zh/">Alist</a>也挺不错，可以试用一下 ，但是个人还是觉得minio配合写博客最合适。）<br>因此5星强烈推荐使用。<br>不过minio的安装需要一点linux命令行常识，这个也简单，百度一下常用linux命令即可，总体来说主要是要修改几个配置文件内容和权限，剩下的就是跟着教程复制粘贴就搞定。<br>当然，安装minio我是走了不少弯路的，套件中心有minio套件，docker里面也有，但是我安装之后都存在外链不能正确读取分享的问题，因此这两个方法我都没用。<br>在我搜了一圈之后，参考了这位博主的minio安装教程<a target="_blank" rel="noopener" href="https://m2.zhugh.com:26800/synology-an-zhuang-shi-yong-minio/">Synology 安装使用 MinIO</a> 我选择的是minio8.0版本，按照博主的教程，依样画葫芦，很快就搞定。<br><img src="https://smartming.asia:9000/hexo/1002/35.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://smartming.asia:9000/hexo/1002/36.png" srcset="/img/loading.gif" lazyload></p>
+<p>安装完成后一定要按照教程修改一下外网分享链接的地址。修改之后记得将minio的网页端口和服务端口都进行一下群晖反向代理，并将4个端口都在路由器做端口转发，这样你的外链文件就可以实现https安全访问。</p>
+<h3 id="关于minio生成永久只读外链的方法"><a href="#关于minio生成永久只读外链的方法" class="headerlink" title="关于minio生成永久只读外链的方法"></a>关于minio生成永久只读外链的方法</h3><p>安装完成minio之后，创建储存单元，minio里面叫buckets（储存桶），如上图所示，我自己建立了3个bucket，可以把它想象成win里面的磁盘或者文件夹。比如我的博客文章里面的图片文件全都放在名为hexo的储存桶里面。可以直接通过网页上传文件：<br><img src="https://smartming.asia:9000/hexo/1002/37.png" srcset="/img/loading.gif" lazyload></p>
+<p>最推荐的上传文件的方法就是<strong>直接通过webdav挂载群晖上miniodata文件夹</strong>，所有minio存储的文件都在群晖这个共享文件夹里面：<br><img src="https://smartming.asia:9000/hexo/1002/38.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://smartming.asia:9000/hexo/1002/39.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://smartming.asia:9000/hexo/1002/40.png" srcset="/img/loading.gif" lazyload></p>
+<p>如上面三张图片所示，这样你需要什么文件或者图片形成外链，只需要将该图片或者文件放在miniodata对应的文件夹中，该文件或图片就自动上传到minio桶里面了，实时同步，并且外链也即时自动生成了。<br>上述就是minio上传文件的原理和方法。然而，当你这样上传文件或者图片之后，你希望引用生成的外链，你进入minio，点击分享外链的按钮，你会发现系统自动生成的是一长串而且有使用期限的链接。<br><img src="https://smartming.asia:9000/hexo/1002/41.png" srcset="/img/loading.gif" lazyload></p>
+<p>这当然不是我们想要的，这里我也查了好多文章，minio自带一个minio client admin管理员可以进行配置，但是我看了下很麻烦。我们参考这篇文章里面的傻瓜式解决办法<a target="_blank" rel="noopener" href="https://blog.csdn.net/zdb1314/article/details/125287537?spm=1001.2014.3001.5506">minio怎么打开永久访问链接</a>简单来说就是在你需要获取永久访问链接的bucket设置里面，增加一条<code>readonly</code>规则即可。<br><img src="https://smartming.asia:9000/hexo/1002/42.png" srcset="/img/loading.gif" lazyload></p>
+<p>之后凡是这个bucket里面的任何文件都是公开可读了，都可以通过<code>https://域名+bucketName+文件路径</code>永久访问，例如我自己的一个mp3文件：</p>
+<pre><code class="hljs"> https://smartming.asia:9000/test/santi.mp3
+</code></pre>
+<h1 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h1><p>至此，通过github pages+hexo+cloudflare搭建的个人博客网站已经全部完成，同时通过minio对象存储服务，可以很方便的引用博客中用到的外链图片文件等等。记录下自己搭建网站过程的坑，怕以后忘了。感谢网络上各位大佬的教程。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/yaorongke/article/details/119089190">GitHub Pages + Hexo搭建个人博客网站，史上最全教程</a><br>2.<a target="_blank" rel="noopener" href="https://www.heson10.com/posts/28396.html">所有关于Valine评论系统的配置都在这里【合集】</a><br>3.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2019284">使用腾讯云DNS解析 + Github Pages，免费搭建个人网站</a><br>4.<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1VC4y1p7JW/">Chevereto图床的搭建</a><br>5.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/544546775">在群晖上使用 Docker 安装 Lsky Pro （兰空）图床「SQLite 版」</a><br>6.<a target="_blank" rel="noopener" href="https://wiki-power.com/%E7%94%A8%E7%BE%A4%E6%99%96%E8%87%AA%E5%B8%A6%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0HTTPS%E8%AE%BF%E9%97%AE">用群晖自带反向代理实现 HTTPS 访问</a><br>7.<a target="_blank" rel="noopener" href="https://m2.zhugh.com:26800/synology-an-zhuang-shi-yong-minio/">Synology 安装使用 MinIO</a><br>8.<a target="_blank" rel="noopener" href="https://blog.csdn.net/zdb1314/article/details/125287537?spm=1001.2014.3001.5506">minio怎么打开永久访问链接</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/" class="category-chain-item">个人博客网站</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%8E%9F%E5%88%9B/">#原创</a>
+      
+        <a href="/tags/%E7%BE%A4%E6%99%96nas/">#群晖nas</a>
+      
+        <a href="/tags/minio/">#minio</a>
+      
+        <a href="/tags/hexo/">#hexo</a>
+      
+        <a href="/tags/githubpages/">#githubpages</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>通过github pages+hexo搭建个人博客</div>
+      <div>https://smartpippin.asia/posts/1002/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>小铭＆小宝</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年12月22日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/1001/" title="Hello World">
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"ajU0Rf438r30zwqdTMH6GXLN-MdYXbMMI","appKey":"yKk268EAigRjJKKbqNrzxCDH","path":"window.location.pathname","placeholder":"你好呀，说点什么呢？","avatar":"retro","meta":["nick","mail","link"],"requiredFields":["mail"],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://api.smartming.asia","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div>
+<div id="music_div" style="position: fixed; bottom: 0px; left: 30px;"> <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=110  src="//music.163.com/outchain/player?type=0&id=7839924105&auto=1&height=90"> </iframe> <script src="https://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script> <script src="/js/musicshow.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="/js/duration.js"></script>
+<script src="/js/musicshow.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
