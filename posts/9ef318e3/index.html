@@ -16,15 +16,24 @@
   <meta name="author" content="小铭＆小宝">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="起因2022年下半年，复习法考之余，我入了PT影视的坑，高清电影还是需要更多的硬盘容量，用了五年多的DS216+II也该完成了它的使命，其实不玩PT的话，正常使用应该是完全够用了。多方做了攻略，最终还是选择了群晖，升级到了DS920+，看了一下23年新出的923+就用AMD的处理器了，解码能力确实不行。虽然920的INTEL Celeron J4125也没好到哪里去，但是要想少折腾选了白裙省事也没">
+<meta property="og:type" content="article">
 <meta property="og:title" content="关于勒索病毒和数据备份的一些思考">
 <meta property="og:url" content="https://smartpippin.asia/posts/9ef318e3/index.html">
 <meta property="og:site_name" content="小铭＆小宝的世界">
+<meta property="og:description" content="起因2022年下半年，复习法考之余，我入了PT影视的坑，高清电影还是需要更多的硬盘容量，用了五年多的DS216+II也该完成了它的使命，其实不玩PT的话，正常使用应该是完全够用了。多方做了攻略，最终还是选择了群晖，升级到了DS920+，看了一下23年新出的923+就用AMD的处理器了，解码能力确实不行。虽然920的INTEL Celeron J4125也没好到哪里去，但是要想少折腾选了白裙省事也没">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://smartming.asia:9000/hexo/1004/front.jpg">
 <meta property="article:published_time" content="2023-06-04T09:46:51.000Z">
-<meta property="article:modified_time" content="2023-06-04T10:26:39.202Z">
+<meta property="article:modified_time" content="2023-06-04T13:23:25.980Z">
 <meta property="article:author" content="小铭＆小宝">
+<meta property="article:tag" content="群晖nas">
+<meta property="article:tag" content="windows">
+<meta property="article:tag" content="原创">
+<meta property="article:tag" content="勒索病毒">
+<meta property="article:tag" content="数据备份">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://smartming.asia:9000/hexo/1004/front.jpg">
   
   
   
@@ -235,7 +244,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          0 字
+          2.8k 字
         
       </span>
     
@@ -247,7 +256,7 @@
         
         
           <!-- compatible with older versions-->
-          1 分钟
+          24 分钟
         
       </span>
     
@@ -298,7 +307,23 @@
             
               <div class="markdown-body">
                 
-                
+                <h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>2022年下半年，复习法考之余，我入了PT影视的坑，高清电影还是需要更多的硬盘容量，用了五年多的DS216+II也该完成了它的使命，其实不玩PT的话，正常使用应该是完全够用了。多方做了攻略，最终还是选择了群晖，升级到了DS920+，看了一下23年新出的923+就用AMD的处理器了，解码能力确实不行。虽然920的INTEL Celeron J4125也没好到哪里去，但是要想少折腾选了白裙省事也没办法了。<br>机器都手，硬盘也全都升级了4个16T的，内存升级到了20G，之前在DS216上没有好好体验过的群晖自带的VMM虚拟机，这次内存升级了想着就可以好好体验一下。<br>主要还是图个新鲜，想着在办公室、在外面就能够操控家里面的网络，当时还想着NAS里面安装一个虚拟的win系统，可以直接装很多exe应用，后来亲自体验下来才发现920这垃圾处理器也不行，我专门去网上找了精简版的win10，只能说勉强能用。<br>没想到事情就出在这千不该万不该安装的win10虚拟机上。<br>我记得很清楚，2022年11月7日中午，午休起床后，无意连接DSM看了一眼，结果发现所有的文件都打不开了，我心里一惊，马上去看日志。<br>根据日志显示应该是在13：30前后，黑客通过扫描到我的群晖VMM虚拟机win10系统的远程桌面端口3389,进入win10虚拟机。在这个win10虚拟机的系统里，我通过smb又挂载了群晖上的存储空间，所以就是刚刚我起床看到的结果，群晖里面几乎所有的文件、照片、视频、电影全部都被加密。</p>
+<p><img src="https://ming-1256986292.cos.ap-chongqing.myqcloud.com/hexo/1.png" srcset="/img/loading.gif" lazyload></p>
+<p>这个图片可以看到，我差不多是一点左右开始午休，到了一点二十多，黑客通过入侵群晖win10虚拟机远程桌面开始疯狂的删除和加密DSM硬盘上的文件<br><img src="https://ming-1256986292.cos.ap-chongqing.myqcloud.com/hexo/2.png" srcset="/img/loading.gif" lazyload></p>
+<p>所有的文件都被加密成了带有.Elbie的文件，根本打不开，除非联系这个邮箱上的人，然后支付比特币，估计也不一定会给你解开。这个勒索病毒的秘钥非常复杂，我看了一下，只要被加密，几乎没有办法硬解密。<br><img src="https://ming-1256986292.cos.ap-chongqing.myqcloud.com/hexo/3.png" srcset="/img/loading.gif" lazyload></p>
+<p>差不多从下午一点半一直加密到了亮点，太可怕了。<br><img src="https://ming-1256986292.cos.ap-chongqing.myqcloud.com/hexo/4.png" srcset="/img/loading.gif" lazyload></p>
+<p>下面就是当时群晖dsm系统日志，清晰展现了黑客侵入虚拟机的win10系统后通过我挂载的smb连接到了群晖的硬盘，污染了几乎所有的文件。<br><img src="https://ming-1256986292.cos.ap-chongqing.myqcloud.com/hexo/5.png" srcset="/img/loading.gif" lazyload></p>
+<p>那天下午我一下午都没心思上班，五六年来收集的几乎所有的资料全部顷刻间化为乌有。<br>网上搜了很多关于勒索病毒的资料，几乎没有恢复的可能，这就真的叫好奇心害死“猫”啊，此刻我就是那只猫。<br>如果不搞这个虚拟机，或者在中午用完之后将win10虚拟机关闭，也不会被这么轻易的入侵。<br>现在想想真的太傻了，一直以为黑客怎么会攻击我们这种普通家庭用户，何况小区的入户宽带都是经过了运营商多少层的NAT中转的，所以完全没把安全放在心上。<br>不仅打开了远程桌面，还将3389端口映射到了外网，同时win10虚拟机本身设置了开机密码，现在想来那应该算是最后的防线，结果没有关机，相当于黑客只要扫描到了我这个暴露在外网的3389端口，就能免密直接进入win10桌面，然后打开我的电脑，点开smb挂载的nas文件，一瞬间，就这样没了。<br>以上就是我中勒索病毒的整个过程。<br>另外，我只能说感谢群晖DSM本身的安全机制真的很好，ssh、telnet等等功能都关闭了。</p>
+<h1 id="对策"><a href="#对策" class="headerlink" title="对策"></a>对策</h1><p>查清了日志，排除了群晖DSM本身的问题，马上删除虚拟机。删除所有被感染的文件。<br>然后用群晖自带的Antivirus Essential进行了全盘查杀。基本上除了部分相册的照片还保留一点之外，其余所有的文件都没了。还好那个时候PT才刚刚起步，保种量不是很多，现在200多T的保种量，庞大的家庭影院库已经建立起来了，如果现在再来这么一下，我估计会崩溃。<br>至于工作文件，在一年前我还全部用的synology drive和电脑实时同步，还好后来感觉网络不怎么好，换成了onedrive，同时开启了群晖的cloudsync与onedrive定期双重备份，相当于上了双保险。这一次的勒索病毒当然也把我备份在群晖里面的工作文件全部感染了，还好cloudsync与onedrive的定期同步不是在那天中午，不然，你懂的。。。单位电脑、onedrive、群晖DSM全部玩完。。。<br>我赶快把onedrive跟群晖的同步暂时取消。<br>至于自己的照片，还好后面换了苹果的生态，狡兔三窟嘛，icloud玩完整整还在。</p>
+<h1 id="后续思考"><a href="#后续思考" class="headerlink" title="后续思考"></a>后续思考</h1><p>经此一役，群晖NAS前面的收集全部前功尽弃，主要的损失其实后面细细想来就是电影视频资源，也到还好。<br>也就是说我之前一直坚持的多云备份给了自己一点喘息之机，现在基本上已经全面构建了数据多云备份的思路，对群晖nas外网开放也多了一些谨慎考虑。</p>
+<h2 id="基本数据备份思路-多云备份"><a href="#基本数据备份思路-多云备份" class="headerlink" title="基本数据备份思路-多云备份"></a>基本数据备份思路-多云备份</h2><p>对于我自己而言，最重要的数据就是工作资料、自己学习资料、私人照片这三类，基本上所需的空间不会超过百G，这两年随着照片的累积，照片占了绝大多数。<br>将这三类资料照片我的云备份主要是icloud，苹果生态实在是很完美，但是icloud的文档同步确实不行。<br>工作、学习资料通过onedrive云备份。<br>再通过cloudsync和icloudpd（群晖上可以定期定时同步icloud照片到本地的docker容器）同步onedrive和icloud的内容到自己的群晖nas。<br>这还没完，群晖nas要开启hyperbackup，之前我没有意识到，如果DSM有hyperbackup备份，是可以恢复到之前的时间节点的，有点向mac的时间机器。hyperbackup又将群晖nas上最重要的资料定期定时加密备份至阿里云。<br>这样一个完整的循环，不管哪里出问题了，总有一处有之前时间节点的数据，可以保万无一失。</p>
+<h2 id="最笨办法，坚持定期冷备份"><a href="#最笨办法，坚持定期冷备份" class="headerlink" title="最笨办法，坚持定期冷备份"></a>最笨办法，坚持定期冷备份</h2><p>这次事件教训很深刻，将之前替换下来的4T，5T，2T的等等硬盘全部作为冷备份盘，重要的文件拷一份上去，放在柜子里好好保存，哪怕前述所有文件都完蛋（几乎不可能），你还有最后柜子里面的硬盘。</p>
+<h2 id="群晖安全策略全面加强"><a href="#群晖安全策略全面加强" class="headerlink" title="群晖安全策略全面加强"></a>群晖安全策略全面加强</h2><p>定期用群晖的安全顾问和防病毒软件加强查杀<br><img src="https://ming-1256986292.cos.ap-chongqing.myqcloud.com/hexo/6.png" srcset="/img/loading.gif" lazyload></p>
+<p>安全设置，账号的两步认证等等加上，不该开的端口全部停掉，修改默认的22端口，尽量用强密码<br><img src="https://ming-1256986292.cos.ap-chongqing.myqcloud.com/hexo/7.png" srcset="/img/loading.gif" lazyload><br>至于转发外网的端口，越少越好，已经转发的需要强密码，尽量用tailscale这样的大内网（这真是个好东西，傻瓜又便捷），可保安全无虞。</p>
+<h2 id="学会了用密码管理工具"><a href="#学会了用密码管理工具" class="headerlink" title="学会了用密码管理工具"></a>学会了用密码管理工具</h2><p>之前要不就用苹果自带的icloud或者谷歌chrome本身自带的密码管理器，也没有强密码的意识，基本所有网站都是一个密码，这次事件之后，认真研究了一下密码管理器，bitwarden和1password都研究了，最终还是选择了自建免费的bitwarden，用了快半年了，事实证明真的全端通用，不仅安全而且非常方便。真的值得每个人都用上。<br><img src="https://ming-1256986292.cos.ap-chongqing.myqcloud.com/hexo/8.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="彻底删了vmm的虚拟机"><a href="#彻底删了vmm的虚拟机" class="headerlink" title="彻底删了vmm的虚拟机"></a>彻底删了vmm的虚拟机</h2><p>虚拟了个寂寞，920本来性能也不行，算了，镜像都删了，一般的需求，更加轻量化的docker完全能够解决，而且docker相互独立，风险更低。</p>
+<p>一次惨痛的教训，勒索病毒确实太厉害了，windows3389的远程端口是经常被攻击的。<br>记录一下这次教训，希望千万不要重演，</p>
+
                 
               </div>
             
@@ -306,6 +331,21 @@
             <div>
               <div class="post-metas my-3">
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%BE%A4%E6%99%96nas/">#群晖nas</a>
+      
+        <a href="/tags/windows/">#windows</a>
+      
+        <a href="/tags/%E5%8E%9F%E5%88%9B/">#原创</a>
+      
+        <a href="/tags/%E5%8B%92%E7%B4%A2%E7%97%85%E6%AF%92/">#勒索病毒</a>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%A4%87%E4%BB%BD/">#数据备份</a>
+      
+    </div>
   
 </div>
 
