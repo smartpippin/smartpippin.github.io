@@ -1,4 +1,4 @@
-!(function() {
+<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>!(function() {
   function show() {
      //简单判断首页，因为我的域名是tomorrow50.xyz，所以首页就会触发
 	if (location.href.match(/asia.{0,1}$/)){
