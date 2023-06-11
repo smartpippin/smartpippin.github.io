@@ -4,6 +4,29 @@
   
   
   <entry>
+    <title>群晖替换、备份套件版QB种子文件</title>
+    <link href="/posts/dd55b84c/"/>
+    <url>/posts/dd55b84c/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="记录一下过程以免遗忘"><a href="#记录一下过程以免遗忘" class="headerlink" title="记录一下过程以免遗忘"></a>记录一下过程以免遗忘</h1><h2 id="套件版QB下载器种子目录"><a href="#套件版QB下载器种子目录" class="headerlink" title="套件版QB下载器种子目录"></a>套件版QB下载器种子目录</h2><p>套件版本的QB下载器，原始目录 应该是&#x2F;volume1&#x2F;@appdata&#x2F;qBittorrent 这个  然后保种文件 是在&#x2F;volume1&#x2F;@appstore&#x2F;qBittorrent 这里找BT_backup</p><p>还有就是拷贝到新的以后 权限要重新设定 我记得是chown sc-qBittorrent: qBittorrent  *   在那个目录下执行我记得是这样 。你自己再原目录确认下 最好  截图下</p><h2 id="关于文件夹权限问题"><a href="#关于文件夹权限问题" class="headerlink" title="关于文件夹权限问题"></a>关于文件夹权限问题</h2><p>通过winscp连接root进入文件夹，重新安装QB套件后，先停止套件，然后在winscp上面给qb文件夹最高权限，包括PUID&#x2F;GUID，再复制之前的BT-backup种子备份和QB其他配置文件，然后进入DSM给所有需要用到QB的文件夹都给完全控制的权限。最后再启动QB套件，会发现所有种子都还在。</p><h2 id="问题排查"><a href="#问题排查" class="headerlink" title="问题排查"></a>问题排查</h2><p>可能原因分析：</p><ol><li><p>因为这是从4.4.0降级到旧版本，可能出现了数据变化，实际上我后来放弃安装旧版本，重新在套件中心装回4.4.0后再用覆盖备份的办法，所有数据和种子都恢复了。但继续用4.4.0说明前面的努力都白费了，不甘心。</p></li><li><p>因为log文件显示种子均已恢复，只是在图形界面上看不到，可能是图形界面问题（嫌疑最大就是nox程序）</p></li><li><p>可能是Linux系统的PUID&#x2F;PGID设置问题</p></li></ol>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>群晖nas</tag>
+      
+      <tag>原创</tag>
+      
+      <tag>PT相关</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>关于勒索病毒和数据备份的一些思考</title>
     <link href="/posts/9ef318e3/"/>
     <url>/posts/9ef318e3/</url>
